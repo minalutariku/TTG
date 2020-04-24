@@ -1,0 +1,234 @@
+#%RAML 1.0
+title: Retail Api
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/2e287edb-530f-4057-9b02-42af76c65b6e/8081 # baseUri: localhost/8081
+version: 1.0.0
+
+types:
+   procuct: 
+    !include dataTypes/Product.raml
+   product_id:
+    !include dataTypes/Product_id.raml
+   bill: 
+    !include dataTypes/bill.raml
+  
+  
+/products:
+  get:
+    description: fetch all products 
+    responses:
+      200:
+        body:
+          application/json:
+            type: product_id
+            example: 
+              !include Examples/ProdIDexm.raml
+      404:
+        body:
+          application/json:
+            example:
+               {"message":"not found"}
+  post:
+    body:
+      application/json:
+        type: product_id
+    responses:
+      201: 
+        body:
+          application/json:
+            example:
+              {"Message": "successfully created"}
+
+    description: product created
+  /{Product_Id}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: product_id
+              example:
+                !include Examples/ProdIDexm.raml
+
+      description: 
+    put:
+      body:
+        application/json:
+          type: product_id
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                { "message": "updated"}
+      description: 
+    delete:
+      body:
+        application/json:
+          type: product_id
+      responses:
+        200:
+         body:
+            application/json:
+              example:
+                {"message" : "deleted"}
+      
+            
+      description: 
+/Bills:
+  get:
+    description: fetch all products 
+    responses:
+      200:
+        body:
+          application/json:
+            type: bill
+            example: 
+              !include Examples/billexample.raml
+      404:
+        body:
+          application/json:
+            example:
+               {"message":"not found"}
+
+  post:
+     body:
+      application/json:
+        type: bill
+     responses:
+        201: 
+         body:
+           application/json:
+             example:
+              {"Message": "successfully created"}
+
+  /{Bill_Id}:
+    post:
+       body:
+        application/json:
+          type: product_id
+       responses:
+        201: 
+         body:
+           application/json:
+             example:
+              {"Message": "successfully created"}
+    put:
+      body:
+        application/json:
+          type: product_id
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                { "message": "updated"}
+      description: 
+    delete:
+      body:
+        application/json:
+          type: bill
+      responses:
+        200:
+         body:
+            application/json:
+              example:
+                {"message" : "deleted"}
+      
+/productCatagories:
+  get:
+    description: retrieve all products catagories
+    responses:
+      200:
+        body:
+          application/json:
+            type: procuct
+            example: 
+              !include Examples/productexam.raml
+      404:
+        body:
+          application/json:
+            example:
+               {"message":"not found"}
+
+  post:
+    body:
+      application/json:
+        type: procuct
+    responses:
+      201: 
+        body:
+          application/json:
+            example:
+              {"Message": "successfully created"}
+
+  /{Product_catagory_Id}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: product_id
+        404:
+          body:
+            application/json:
+              example:
+               {"message":"not found"}
+
+    put:
+       body:
+        application/json:
+          type: procuct
+       responses:
+        200:
+          body:
+            application/json:
+              example:
+                { "message": "updated"}
+
+    delete:
+      body:
+        application/json:
+          type: procuct
+      responses:
+        200:
+         body:
+            application/json:
+              example:
+                {"data" : "deleted"}
+
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+      
+    
